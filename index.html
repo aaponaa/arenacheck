@@ -1,12 +1,31 @@
 <!doctype html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>arenacheck</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
+  
   <body>
+
+    <!-- Inclusion de la bibliothèque PapaParse -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+    <!-- Inclusion de la bibliothèque DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    
+    <!-- Inclusion de la bibliothèque SheetJS -->
+    <!-- use version 0.19.1 -->
+    <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.19.1/package/dist/xlsx.full.min.js"></script>
+
+    <!-- Inclusion de la bibliothèque Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    
+    <!-- Inclusion de la bibliothèque Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
     <header class="p-3 text-bg-dark">
         <div class="container">
@@ -34,7 +53,7 @@
     <div style="text-align: center;">
         <h1>Vos données Reflex IcI</h1>
         <div>
-          <textarea id="monTextarea" rows="10" cols="200">Entrez votre texte CSV ici</textarea>
+          <textarea id="csv" rows="10" cols="120">Entrez votre texte CSV ici</textarea>
         </div>
         <div>
           <button onclick="getData()">Récupérer les données</button>
@@ -52,14 +71,27 @@
     </footer>
 
     <script>
-    function getData() {
-        var textarea = document.getElementById("monTextarea");
-        var donnees = textarea.value;
-        console.log(donnees);
-    }
+        function getData() {
+            var csv = document.getElementById("csv").value;
+            var tableau;
 
+            Papa.parse(csv, {
+            header: true,
+            complete: function (results) {
+                tableau = results.data;
+            }
+            });
+
+            var feuille = XLSX.utils.json_to_sheet(tableau);
+
+            var classeur = { SheetNames: ["Feuille 1"], Sheets: { "Feuille 1": feuille } };
+            
+            console.log(classeur);
+
+        }
     </script>
+    
+    <canvas id="monGraphique" width="400" height="400"></canvas>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>
