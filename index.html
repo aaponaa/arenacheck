@@ -12,10 +12,6 @@
 
     <!-- Inclusion de la bibliothèque PapaParse -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-
-    <!-- Inclusion de la bibliothèque DataTables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     
     <!-- Inclusion de la bibliothèque SheetJS -->
     <!-- use version 0.19.1 -->
@@ -87,8 +83,23 @@
             var classeur = { SheetNames: ["Feuille 1"], Sheets: { "Feuille 1": feuille } };
             
             console.log(classeur);
-
         }
+
+        function makeGraph() {
+
+            // Obtention de la première colonne de données (étiquettes des barres)
+            //var etiquettes = XLSX.utils.sheet_to_json(classeur.Sheets["Feuille 1"], { header: 1 })[0];
+
+            // Obtention de la seconde colonne de données (valeurs des barres)
+            //var valeurs = XLSX.utils.sheet_to_json(classeur.Sheets["Feuille 1"], { header: 1 })[1];
+
+            var maps = tableau.map(function (ligne) {
+                return ligne.Map;
+            });
+            console.log(maps);
+        }
+
+
     </script>
     
     <canvas id="monGraphique" width="400" height="400"></canvas>
