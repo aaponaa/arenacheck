@@ -8,15 +8,12 @@
 .chart-container {
     margin: 5px;
     padding: 10px;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.logo{
+    width: 80px;
+    height: 80px;
 }
 
-.chart-container-ring{
-    margin: 5px;
-    padding: 10px;
-    border: 2px solid black;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
