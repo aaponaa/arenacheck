@@ -109,3 +109,42 @@ const timedmgGraph = (tableau) =>{
         }
         );
 }
+
+
+
+const mostspecGraph = (tableau) =>{
+    const ctx = document.getElementById('mostspecGraph');
+    
+    const ENMY = tableau.map(row => row.EnemyComposition);
+    console.log(ENMY)
+
+    let temp = []
+    
+    for (let i = 0; i < ENMY.length; i++) { 
+        console.log(splitString(ENMY[i]))  
+    }
+
+
+    const data = {
+        labels: "Scatter Dataset",
+        datasets: [{
+            label: 'Ta Putain de MMR Vs sa MMR de Batard',
+            data: makeXY(DUR, DMG),
+        }]
+        };
+        new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                y: {
+                    beginAtZero: true
+                }
+                }
+            },
+        }
+        );
+}
+
+
+

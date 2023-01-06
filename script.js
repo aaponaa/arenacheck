@@ -1,3 +1,8 @@
+const onlyUnique = (value, index, self) => {
+    return self.indexOf(value) === index;
+}
+  
+
 const checkOccurrence = (array, element) => {
     let counter = 0;
     for (item of array.flat()) {
@@ -52,4 +57,5 @@ const getData = () =>{
     mmrGraph(tableau);
     emmrGraph(tableau);
     timedmgGraph(tableau);
+    mostspecGraph(tableau);
 }
