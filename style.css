@@ -4,5 +4,6 @@
 
 .chart-container {
     width: 50%;
-    margin: 20px;
+    margin: 5px;
+    padding: 10px;
 }

@@ -15,6 +15,14 @@ const checkOccurrence = (array, element) => {
     return counter;
 };
 
+const makeXY = (xValues, yValues) => {
+    const objects = [];
+    for (let i = 0; i < xValues.length; i++) {
+        objects.push({ x: xValues[i], y: yValues[i] });
+    }
+    return objects;
+}
+
 const getData = () =>{
     let csv = document.getElementById("csv").value;
     let tableau;
@@ -25,14 +33,12 @@ const getData = () =>{
         tableau = results.data;
     }
     });
-    
-    console.log(tableau);
-    let colname = "MMR"
+
     winGraph(tableau);
     mmrGraph(tableau);
+    emmrGraph(tableau);
 
 }
-
 
     //selectioner une colone 
     /*tableau.map(row => row.Victory)*/
@@ -40,7 +46,7 @@ const winGraph = (tableau) =>{
 
     const ctx = document.getElementById('winChart');
 
-    const occu = [checkOccurrence(tableau.map(row => row.Victory),"true"),checkOccurrence(tableau.map(row => row.Victory),"false")]
+    const OCCU = [checkOccurrence(tableau.map(row => row.Victory),"true"),checkOccurrence(tableau.map(row => row.Victory),"false")]
 
     const data = {
     labels: [
@@ -49,7 +55,7 @@ const winGraph = (tableau) =>{
     ],
     datasets: [{
         label: 'Score',
-        data: occu,
+        data: OCCU,
         backgroundColor: [
         'rgb(75, 192, 192)',
         'rgb(255, 99, 132)',
@@ -69,8 +75,8 @@ const mmrGraph = (tableau) =>{
     const ctx = document.getElementById('mmrChart');
     
     const data = {
-        labels: [
-        ],
+        // TODO Make a timestamp converter to use it as label for linechart MMR 
+        labels: " ",
         datasets: [{
             label: 'Ta Putain de MMR',
             data: tableau.map(row => row.MMR),
@@ -83,6 +89,36 @@ const mmrGraph = (tableau) =>{
             type: 'line',
             data: data,
             options: {}
+        }
+        );
+}
+
+const emmrGraph = (tableau) =>{
+    const ctx = document.getElementById('emmrChart');
+    
+    const MMR = tableau.map(row => row.MMR);
+    const EMMR = tableau.map(row => row.EnemyMMR)
+
+    
+
+    const data = {
+        labels: "Scatter Dataset",
+        datasets: [{
+            label: 'Ta Putain de MMR Vs sa MMR de Batard',
+            data: makeXY(MMR, EMMR),
+        }]
+        };
+        new Chart(ctx, {
+            type: 'scatter',
+            data: data,
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom'
+                    }
+                }
+            }
         }
         );
 }
