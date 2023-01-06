@@ -5,11 +5,13 @@
 .chart-container {
     width: 50%;
     margin: 5px;
+    height: 30%;
     padding: 10px;
 }
 
 .chart-container-ring{
     width: 30%;
+    height: 30%;
     margin: 5px;
     padding: 10px;
 }
