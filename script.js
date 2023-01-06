@@ -74,12 +74,15 @@ const winGraph = (tableau) =>{
 const mmrGraph = (tableau) =>{
     const ctx = document.getElementById('mmrChart');
     
+    const MMR = tableau.map(row => row.MMR);
+    const DATE = tableau.map(row => row.Timestamp)
+
     const data = {
         // TODO Make a timestamp converter to use it as label for linechart MMR 
-        labels: " ",
+        labels: DATE,
         datasets: [{
             label: 'Ta Putain de MMR',
-            data: tableau.map(row => row.MMR),
+            data: MMR,
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1    
@@ -97,9 +100,7 @@ const emmrGraph = (tableau) =>{
     const ctx = document.getElementById('emmrChart');
     
     const MMR = tableau.map(row => row.MMR);
-    const EMMR = tableau.map(row => row.EnemyMMR)
-
-    
+    const EMMR = tableau.map(row => row.EnemyMMR);    
 
     const data = {
         labels: "Scatter Dataset",
