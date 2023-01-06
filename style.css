@@ -1,17 +1,25 @@
 .charts{
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .chart-container {
-    width: 50%;
+    width: 40%;
     margin: 5px;
-    height: 30%;
+    height: 45%;
     padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .chart-container-ring{
-    width: 30%;
+    width: 40%;
     height: 30%;
     margin: 5px;
     padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }

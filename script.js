@@ -51,5 +51,5 @@ const getData = () =>{
     winGraph(tableau);
     mmrGraph(tableau);
     emmrGraph(tableau);
-
+    timedmgGraph(tableau);
 }

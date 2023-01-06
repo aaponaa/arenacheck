@@ -15,8 +15,8 @@ const winGraph = (tableau) =>{
         label: 'Score',
         data: OCCU,
         backgroundColor: [
-        'rgb(75, 192, 192)',
-        'rgb(255, 99, 132)',
+            'rgb(0, 120, 255)',
+            'rgb(217,0,0)',
         ]
     }]
     };
@@ -65,6 +65,34 @@ const emmrGraph = (tableau) =>{
         datasets: [{
             label: 'Ta Putain de MMR Vs sa MMR de Batard',
             data: makeXY(MMR, EMMR),
+        }]
+        };
+        new Chart(ctx, {
+            type: 'scatter',
+            data: data,
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom'
+                    }
+                }
+            }
+        }
+        );
+}
+
+const timedmgGraph = (tableau) =>{
+    const ctx = document.getElementById('timedmgChart');
+    
+    const DUR = tableau.map(row => row.Duration);
+    const DMG = tableau.map(row => row.Damage);    
+
+    const data = {
+        labels: "Scatter Dataset",
+        datasets: [{
+            label: 'Ta Putain de MMR Vs sa MMR de Batard',
+            data: makeXY(DUR, DMG),
         }]
         };
         new Chart(ctx, {
