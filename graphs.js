@@ -1,3 +1,4 @@
+//Total des parties :
 const winGraph = (tableau) =>{
     const ctx = document.getElementById('winChart');
 
@@ -23,6 +24,7 @@ const winGraph = (tableau) =>{
 
 }
 
+// MMR au fil des parties :
 const mmrGraph = (tableau) =>{
     const ctx = document.getElementById('mmrChart');
     
@@ -33,16 +35,14 @@ const mmrGraph = (tableau) =>{
     for (let i = 0; i < date.length; i++){
         datestr.push(makeDate(date[i]));
     }
-    console.log(datestr);
 
     const data = {
-        // TODO Make a timestamp converter to use it as label for linechart MMR 
         labels: datestr,
         datasets: [{
             label: 'Ta Putain de MMR au fil des games',
             data: mmr,
             fill: false,
-            borderColor: 'rgb(75, 192, 192)',
+            borderColor: 'rgb(88, 137, 156)',
             tension: 0.1    
         }]
         };
@@ -54,6 +54,7 @@ const mmrGraph = (tableau) =>{
         );
 }
 
+//MMR comparative :
 const emmrGraph = (tableau) =>{
     const ctx = document.getElementById('emmrChart');
     
@@ -65,6 +66,7 @@ const emmrGraph = (tableau) =>{
         datasets: [{
             label: 'Ta Putain de MMR Vs sa MMR de Batard',
             data: makeXY(MMR, EMMR),
+            borderColor: 'rgb(88, 137, 156)',
         }]
         };
         new Chart(ctx, {
@@ -82,6 +84,7 @@ const emmrGraph = (tableau) =>{
         );
 }
 
+//Dommages en fonction de la durée de la partie :
 const timedmgGraph = (tableau) =>{
     const ctx = document.getElementById('timedmgChart');
     
@@ -89,10 +92,11 @@ const timedmgGraph = (tableau) =>{
     const DMG = tableau.map(row => row.Damage);    
 
     const data = {
-        labels: "Scatter Dataset",
+        labels: "Line Chart",
         datasets: [{
-            label: 'Ta Putain de MMR Vs sa MMR de Batard',
+            label: 'Tes putains de Dmg vs le temps que tu kill ou tu die',
             data: makeXY(DUR, DMG),
+            borderColor: 'rgb(88, 137, 156)',
         }]
         };
         new Chart(ctx, {
@@ -111,10 +115,10 @@ const timedmgGraph = (tableau) =>{
 }
 
 
-
+//Classse les plus rencontrées :
 const mostspecGraph = (tableau) =>{
     const ctx = document.getElementById('mostspecChart');
-    
+
     const enmy = tableau.map(row => row.EnemyComposition);
     
     let temp = makePlayers(enmy);
@@ -125,13 +129,17 @@ const mostspecGraph = (tableau) =>{
             players.push(temp[i][j].classe);
         }
     }
+
     players = countBarchart(players);
+    
+    const classeColors = Object.keys(players).map(classe => getClasseColors()[classe]);
 
     const data = {
         labels: Object.keys(players),
         datasets: [{
             label: 'Les Classe qui te cassent les couilles',
             data: Object.values(players),
+            backgroundColor:classeColors,
             borderWidth: 1
         }]
         };

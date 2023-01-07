@@ -41,6 +41,12 @@ h1,h2,h3,p {
     position: relative;
 }
 
+.databt{
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
 .chart-button{
     all: initial;
 }
@@ -48,7 +54,7 @@ h1,h2,h3,p {
 .tooltip-chart{
     display: none;
     position: absolute;
-    background-color: rgb(85, 85, 85);
+    background-color: #2e4750;
     color: rgb(255, 255, 255);
     text-align: justify;
     border-radius: 6px;
@@ -66,4 +72,5 @@ header{
     text-align: center;
     background-color: #2e4750;
     margin-bottom: 5%;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
 }

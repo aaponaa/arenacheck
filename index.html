@@ -42,7 +42,7 @@
                 <textarea id="csv" rows="10" cols="120" placeholder="Copiez coller vos données ici"></textarea>
                 </div>
                 <div>
-                <button onclick="getData()">Récupérer les données</button>
+                <button onclick="getData()" class="databt">Récupérer les données</button>
                 </div>
             </div>
 
@@ -59,7 +59,7 @@
                 </div>
                 
                 <div class="chart-container">
-                    <h3>Nuage de point :</h3>
+                    <h3>MMR comparative :</h3>
                     <canvas id="emmrChart"></canvas>
                     <div class="chart-button-container">
                         <div class="tooltip-chart" id="tooltip-scatterchart">
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="chart-container">
-                    <h3>Les dommages par rapport a la durée :</h3>
+                    <h3>Dommages en fonction de la durée de la partie :</h3>
                     <canvas id="timedmgChart"></canvas>
                     <div class="chart-button-container">
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>

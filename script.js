@@ -85,9 +85,7 @@ const countBarchart = (array) => {
     return counts;
 }
 
-
-const getData = () =>{
-    let csv = document.getElementById("csv").value;
+const parse = (csv) =>{
     let tableau;
 
     Papa.parse(csv, {
@@ -96,10 +94,32 @@ const getData = () =>{
             tableau = results.data;
         }
     });
-
-    plotCharts(tableau);
+    return tableau;
 }
 
+const getData = (testmode=false) =>{
+    const csv = document.getElementById("csv").value;
+
+    plotCharts(parse(csv));
+}
+
+const getClasseColors = () =>{
+    return classeColor = {
+        DEATHKNIGHT:"rgb(196, 31, 59)",
+        DRUID:"rgb(255, 125, 10)",
+        MONK:"rgb(0, 255, 150)",
+        EVOKER:"rgb(51, 147, 127)",
+        PRIEST:"rgb(255, 255, 255)",
+        WARLOCK:"rgb(135, 135, 237)",
+        WARRIOR:"rgb(199, 156, 110)",
+        HUNTER:"rgb(169, 210, 113)",
+        ROGUE:"rgb(255, 245, 105)",
+        SHAMAN:"rgb(0, 112, 222)",
+        MAGE:"rgb(64, 199, 235)",
+        DEMONHUNTER:"rgb(163, 48, 201)",
+        PALADIN:"rgb(245, 140, 186)",
+    }
+}
 
 const plotCharts = (tableau) =>{
     
