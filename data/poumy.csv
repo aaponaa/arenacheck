@@ -1,0 +1,19 @@
+Timestamp;Map;PlayersNumber;TeamComposition;EnemyComposition;Duration;Victory;KillingBlows;Damage;Healing;Honor;RatingChange;MMR;EnemyMMR;Specialization;isRated
+1672955992;1134;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;DRUID-Feral-Fatcatexe-Outland,PRIEST-Shadow-Monsignore-Dethecus;122;false;0;1141976;140468;0;-11;1587;1582;Assassination;true
+1672955786;2547;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;MONK-Windwalker-Mundatmer-Blackmoore,PRIEST-Holy-Ibanyoubye-Blackmoore;153;false;0;1861797;145797;0;-10;1613;1610;Assassination;true
+1672955483;2373;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;DEMONHUNTER-Havoc-Shâdra-Sen'jin,SHAMAN-Restoration-Krockar-Sen'jin;53;false;0;627640;117543;0;-10;1640;1640;Assassination;true
+1672955328;1134;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;PRIEST-Discipline-Mæd,WARRIOR-Fury-Destruu-Doomhammer;116;true;0;2139468;171894;0;14;1612;1620;Assassination;true
+1672955054;2509;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;MONK-Mistweaver-Nâdâ,ROGUE-Subtlety-Moesizelag;106;true;1;1033837;69196;0;14;1585;1589;Assassination;true
+1672954771;2373;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;EVOKER-Preservation-Yooshi-ShatteredHand,WARRIOR-Fury-Instacharge-Blackrock;194;true;0;2730303;300645;0;13;1559;1563;Assassination;true
+1672954439;2373;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;PRIEST-Shadow-Tolqen-Stormscale,WARLOCK-Demonology-Nitxzi-Stormscale;105;false;0;1290288;195160;0;-10;1585;1583;Assassination;true
+1672954228;1134;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;EVOKER-Preservation-Samsungevo-Stormscale,PRIEST-Shadow-Methslinger-Draenor;149;true;0;2686215;246373;0;13;1559;1561;Assassination;true
+1672953982;2373;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;DRUID-Restoration-Jvillá-Outland,WARRIOR-Arms-Samtheplmber-Outland;133;true;1;1697656;122701;0;13;1533;1530;Assassination;true
+1672953736;1134;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;PRIEST-Shadow-Exinterp-Blackrock,WARLOCK-Affliction-Forumsurfer-Blackrock;62;true;1;1147865;84763;0;13;1507;1508;Assassination;true
+1672953518;617;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;MONK-Mistweaver-Jûzô-Illidan,WARLOCK-Affliction-Tôkì-Illidan;102;true;1;1514889;164541;0;12;1481;1478;Assassination;true
+1672953320;617;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;DRUID-Feral-Furrykruger-TheMaelstrom,PRIEST-Discipline-Maquivel-Aggra(Português);93;false;0;1277521;107785;0;-12;1507;1506;Assassination;true
+1672953127;2509;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;MAGE-Fire-Prayforu-Blackmoore,ROGUE-Subtlety-Даркроджер-СвежевательДуш;147;true;1;1356090;191612;0;12;1481;1482;Assassination;true
+1672952886;617;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;MONK-Mistweaver-Лареная-Ревущийфьорд,WARRIOR-Arms-Чурбанидзе-Ревущийфьорд;69;true;1;1008724;73744;0;11;1455;1456;Assassination;true
+1672952718;1552;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;DEMONHUNTER-Havoc-Mandolino-Draenor,DRUID-Restoration-ßatmon-Draenor;133;true;1;2555022;263531;0;11;1429;1427;Assassination;true
+1672952497;2547;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;HUNTER-Beast Mastery-Antihørde-Silvermoon,SHAMAN-Restoration-Joekelvrouw-TarrenMill;74;true;1;1009329;109858;0;10;1402;1405;Assassination;true
+1672952293;2509;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;PRIEST-Holy-Hÿron-Krasus,ROGUE-Assassination-Laverna-Krasus;182;false;0;2503829;131398;0;-13;1429;1427;Assassination;true
+1672952024;1552;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;MAGE-Arcane-Аркифлаим-ЧерныйШрам,ROGUE-Subtlety-Вуэра-Гордунни;103;false;0;599784;51515;0;-13;1455;1455;Assassination;true

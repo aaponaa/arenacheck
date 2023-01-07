@@ -117,19 +117,26 @@ const mostspecGraph = (tableau) =>{
     
     const ENMY = tableau.map(row => row.EnemyComposition);
     console.log(ENMY)
-
-    let temp = []
     
+    let temp = [];
+
     for (let i = 0; i < ENMY.length; i++) { 
-        console.log(splitString(ENMY[i]))  
+        let row  = ENMY[i];
+        let player = row.split(',')  ;
+        for (let i = 0; i < player.length; i++){ 
+            temp.push(parsePlayers(player[i]));
+        }
     }
 
+    for (let i = 0; i < temp.length; i++){
+        console.log(temp[i].classe);
+    }
 
     const data = {
-        labels: "Scatter Dataset",
+        labels: "BarChart",
         datasets: [{
             label: 'Ta Putain de MMR Vs sa MMR de Batard',
-            data: makeXY(DUR, DMG),
+            data: [10,30,40],
         }]
         };
         new Chart(ctx, {

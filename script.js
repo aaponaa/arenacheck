@@ -1,7 +1,6 @@
 const onlyUnique = (value, index, self) => {
     return self.indexOf(value) === index;
 }
-  
 
 const checkOccurrence = (array, element) => {
     let counter = 0;
@@ -28,29 +27,49 @@ const makeXY = (xValues, yValues) => {
     return objects;
 }
 
-const splitString = (str) => {
-    const parts = str.split('-');
-    const classes = [];
-    const specs = [];
-    const names = [];
-  
-    for (let i = 0; i < parts.length; i += 3) {
-      classes.push(parts[i]);
-      specs.push(parts[i + 1]);
-      names.push(parts[i + 2]);
-    }  
-    return [classes, specs, names];
-}
+const parsePlayers = (row) => {
+    // Séparons les différentes informations de la ligne en utilisant le caractère '-' comme séparateur
+    const parts = row.split('-');
+    const PLAYERSERV = "Archimonde";
+
+    let classe = '', spec = '', pseudo = '', server = '';
+    
+    if (parts.length > 0) {
+        classe = parts[0];
+    }
+    
+    if (parts.length > 1) {
+        spec = parts[1];
+    }
+    
+    if (parts.length > 2) {
+        pseudo = parts[2];
+    }
+    
+    if (parts.length > 3) {
+        server = parts[3];
+    }else{
+        server = PLAYERSERV
+    }
+    
+    // Renvoyons un objet contenant les informations isolées
+    return {
+      classe: classe,
+      spec: spec,
+      pseudo: pseudo,
+      server: server
+    };
+  }
 
 const getData = () =>{
     let csv = document.getElementById("csv").value;
     let tableau;
 
     Papa.parse(csv, {
-    header: true,
-    complete: function (results) {
-        tableau = results.data;
-    }
+        header: true,
+        complete: function (results) {
+            tableau = results.data;
+        }
     });
 
     winGraph(tableau);
