@@ -14,7 +14,7 @@ const makeDate = (timestamp) => {
     const date = new Date(timestamp*1000);
     const dateString = date.toLocaleDateString('fr-FR');
     const timeString = date.toLocaleTimeString('fr-FR');
-    return `Date: ${dateString}, Time: ${timeString}`;
+    return `${dateString} - ${timeString}`;
 }
 
 const parsePlayers = (row) => {

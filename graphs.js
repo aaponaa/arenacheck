@@ -26,17 +26,18 @@ const winGraph = (tableau) =>{
 const mmrGraph = (tableau) =>{
     const ctx = document.getElementById('mmrChart');
     
-    const mmr = tableau.map(row => row.MMR);
-    const date = tableau.map(row => row.Timestamp);
+    const mmr = tableau.map(row => row.MMR).reverse();
+    const date = tableau.map(row => row.Timestamp).reverse();
     const datestr = [];
 
     for (let i = 0; i < date.length; i++){
         datestr.push(makeDate(date[i]));
     }
     console.log(datestr);
+
     const data = {
         // TODO Make a timestamp converter to use it as label for linechart MMR 
-        labels: date,
+        labels: datestr,
         datasets: [{
             label: 'Ta Putain de MMR au fil des games',
             data: mmr,
