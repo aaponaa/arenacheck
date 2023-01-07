@@ -1,22 +1,16 @@
 const winGraph = (tableau) =>{
-
     const ctx = document.getElementById('winChart');
 
-    //tableau = tableau.filter(tableau => tableau.Rated === "true");
-
-    const OCCU = [checkOccurrence(tableau.map(row => row.Victory),"true"),checkOccurrence(tableau.map(row => row.Victory),"false")]
+    const win = countBarchart(tableau.map(row => row.Victory))
 
     const data = {
-    labels: [
-        'Wins',
-        'Loose',
-    ],
+    labels: Object.keys(win),
     datasets: [{
         label: 'Score',
-        data: OCCU,
+        data: Object.values(win),
         backgroundColor: [
-            'rgb(0, 120, 255)',
             'rgb(217,0,0)',
+            'rgb(0, 120, 255)',
         ]
     }]
     };
@@ -32,15 +26,15 @@ const winGraph = (tableau) =>{
 const mmrGraph = (tableau) =>{
     const ctx = document.getElementById('mmrChart');
     
-    const MMR = tableau.map(row => row.MMR);
-    const DATE = tableau.map(row => row.Timestamp)
+    const mmr = tableau.map(row => row.MMR);
+    const date = tableau.map(row => row.Timestamp)
 
     const data = {
         // TODO Make a timestamp converter to use it as label for linechart MMR 
-        labels: DATE,
+        labels: date,
         datasets: [{
             label: 'Ta Putain de MMR au fil des games',
-            data: MMR,
+            data: mmr,
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1    
@@ -115,28 +109,24 @@ const timedmgGraph = (tableau) =>{
 const mostspecGraph = (tableau) =>{
     const ctx = document.getElementById('mostspecGraph');
     
-    const ENMY = tableau.map(row => row.EnemyComposition);
-    console.log(ENMY)
+    const enmy = tableau.map(row => row.EnemyComposition);
     
-    let temp = [];
-
-    for (let i = 0; i < ENMY.length; i++) { 
-        let row  = ENMY[i];
-        let player = row.split(',')  ;
-        for (let i = 0; i < player.length; i++){ 
-            temp.push(parsePlayers(player[i]));
-        }
-    }
+    let temp = makePlayers(enmy);
+    let players = [];
 
     for (let i = 0; i < temp.length; i++){
-        console.log(temp[i].classe);
+        for (let j = 0; j < temp[i].length; j++){
+            players.push(temp[i][j].classe);
+        }
     }
+    players = countBarchart(players);
 
     const data = {
-        labels: "BarChart",
+        labels: Object.keys(players),
         datasets: [{
-            label: 'Ta Putain de MMR Vs sa MMR de Batard',
-            data: [10,30,40],
+            label: 'Les Classe qui te cassent les couilles',
+            data: Object.values(players),
+            borderWidth: 1
         }]
         };
         new Chart(ctx, {
@@ -144,11 +134,11 @@ const mostspecGraph = (tableau) =>{
             data: data,
             options: {
                 scales: {
-                y: {
+                  y: {
                     beginAtZero: true
+                  }
                 }
-                }
-            },
+            }
         }
         );
 }
