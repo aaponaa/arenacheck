@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel = "icon" href = "./img/favicon.ico" type = "image/x-icon">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     </head>
     <body>
 
@@ -56,26 +57,32 @@
 
             <div class="charts">            
                 <div class="chart-container">
-                    <h3>MMR au fil des parties:</h3>
+                    <h3>MMR au fil des parties :</h3>
                     <canvas id="mmrChart"></canvas>
                     <div class="chart-button-container">
-                        <button class="chart-button">    
-                            <img src="https://img.icons8.com/android/24/null/info.png"/></button>
+                        <button class="chart-button">
+                            <img src="https://img.icons8.com/android/24/null/info.png"/>
+                        </button>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
                 </div>
                 
                 <div class="chart-container">
-                    <h3>Nuage de point:</h3>
+                    <h3>Nuage de point :</h3>
                     <canvas id="emmrChart"></canvas>
                     <div class="chart-button-container">
-                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
+                        <div class="tooltip-chart" id="tooltip-scatterchart">
+                            <strong>Diagramme de dispersion:</strong> C'est un type de graphique qui utilise des points pour représenter les données. 
+                            Les points sont placés sur un graphique en fonction de leurs valeurs sur deux axes différents. 
+                            Ils sont utilisés pour visualiser les relations entre deux variables et pour détecter des tendances ou des modèles dans les données.
+                        </div>
+                        <button class="chart-button" id="info-scatterchart"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
                 </div>
 
                 <div class="chart-container">
-                    <h3>Les dommages par rapport a la durée:</h3>
+                    <h3>Les dommages par rapport a la durée :</h3>
                     <canvas id="timedmgChart"></canvas>
                     <div class="chart-button-container">
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
@@ -83,22 +90,22 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <h3>Classse les plus rencontrées</h3>
+                    <h3>Classse les plus rencontrées :</h3>
                     <canvas id="mostspecChart"></canvas>
                     <div class="chart-button-container">
+                        <div class="tooltip-chart" id="tooltip-barchart">
+                            <strong>Graphique en barre:</strong>  C'est un type de graphique qui utilise des barres horizontales ou verticales pour représenter des données numériques. 
+                            Leur longueur est proportionnelle aux valeurs qu'elles représentent. 
+                            Ils sont souvent utilisés pour comparer des valeurs ou pour montrer des tendances au fil du temps.
+                        </div>
                         <button class="chart-button" id="info-barchart">
-                            <div class="tooltip-chart" id="tooltip-barchart">
-                                Graphique en barre: C'est un type de graphique qui utilise des barres horizontales ou verticales pour représenter des données numériques. 
-                                Leur longueur est proportionnelle aux valeurs qu'elles représentent. 
-                                Ils sont souvent utilisés pour comparer des valeurs ou pour montrer des tendances au fil du temps.
-                            </div>
                             <img src="https://img.icons8.com/android/24/null/info.png"/>
                         </button>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
                 </div>
                 <div class="chart-container">
-                    <h3>Total des parties:</h3>
+                    <h3>Total des parties :</h3>
                     <canvas id="winChart"></canvas>
                     <div class="chart-button-container">
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
@@ -125,16 +132,25 @@
 
 
     <script>
-        const button = document.querySelector("#info-barchart");
-        const tooltip = document.querySelector("#tooltip-barchart");
+        const buttonInfoBarchart = document.querySelector("#info-barchart");
+        const tooltipInfoBarchart = document.querySelector("#tooltip-barchart");
+        const buttonInfoScatterchart = document.querySelector("#info-scatterchart");
+        const tooltipInfoScatterchart = document.querySelector("#tooltip-scatterchart");
 
-        button.addEventListener("mouseover", () => {
-            console.log("test")
-            tooltip.style.display = "block";
+        buttonInfoBarchart.addEventListener("mouseover", () => {
+            tooltipInfoBarchart.style.display = "block";
         });
 
-        button.addEventListener("mouseout", () => {
-            tooltip.style.display = "none";
+        buttonInfoBarchart.addEventListener("mouseout", () => {
+            tooltipInfoBarchart.style.display = "none";
+        });
+
+        buttonInfoScatterchart.addEventListener("mouseover", () => {
+            tooltipInfoScatterchart.style.display = "block";
+        });
+
+        buttonInfoScatterchart.addEventListener("mouseout", () => {
+            tooltipInfoScatterchart.style.display = "none";
         });
     </script>
 
