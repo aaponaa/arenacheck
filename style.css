@@ -5,15 +5,42 @@
     grid-gap: 15px;
 }
 
-.chart-container {
+.chart-container{
     margin: 5px;
     padding: 10px;
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
+.data{
+    margin: 6%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 .logo{
     width: 80px;
     height: 80px;
 }
 
+.chart-button-container{
+    text-align: right;
+    margin: 5px;
+}
+
+.chart-button{
+    all: initial;
+}
+
+.tooltip-chart{
+    display: none;
+    position: absolute;
+    background-color: rgb(85, 85, 85);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0px;
+  }

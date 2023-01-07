@@ -27,8 +27,13 @@ const mmrGraph = (tableau) =>{
     const ctx = document.getElementById('mmrChart');
     
     const mmr = tableau.map(row => row.MMR);
-    const date = tableau.map(row => row.Timestamp)
+    const date = tableau.map(row => row.Timestamp);
+    const datestr = [];
 
+    for (let i = 0; i < date.length; i++){
+        datestr.push(makeDate(date[i]));
+    }
+    console.log(datestr);
     const data = {
         // TODO Make a timestamp converter to use it as label for linechart MMR 
         labels: date,
@@ -107,7 +112,7 @@ const timedmgGraph = (tableau) =>{
 
 
 const mostspecGraph = (tableau) =>{
-    const ctx = document.getElementById('mostspecGraph');
+    const ctx = document.getElementById('mostspecChart');
     
     const enmy = tableau.map(row => row.EnemyComposition);
     

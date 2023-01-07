@@ -10,6 +10,13 @@ const makeXY = (xValues, yValues) => {
     return objects;
 }
 
+const makeDate = (timestamp) => {
+    const date = new Date(timestamp*1000);
+    const dateString = date.toLocaleDateString('fr-FR');
+    const timeString = date.toLocaleTimeString('fr-FR');
+    return `Date: ${dateString}, Time: ${timeString}`;
+}
+
 const parsePlayers = (row) => {
     // Séparons les différentes informations de la ligne en utilisant le caractère '-' comme séparateur
     const parts = row.split('-');
@@ -78,6 +85,7 @@ const countBarchart = (array) => {
     return counts;
 }
 
+
 const getData = () =>{
     let csv = document.getElementById("csv").value;
     let tableau;
@@ -89,9 +97,16 @@ const getData = () =>{
         }
     });
 
+    plotCharts(tableau);
+}
+
+
+const plotCharts = (tableau) =>{
+    
     winGraph(tableau);
     mmrGraph(tableau);
     emmrGraph(tableau);
     timedmgGraph(tableau);
     mostspecGraph(tableau);
+
 }

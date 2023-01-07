@@ -1,96 +1,141 @@
 <!doctype html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ArenaCheck</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel = "icon" href = "./img/favicon.ico" type = "image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  </head>
-  
-  <body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ArenaCheck</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel = "icon" href = "./img/favicon.ico" type = "image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    </head>
+    <body>
 
-    <!-- Inclusion de la bibliothèque PapaParse -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-    
-    <!-- Inclusion de la bibliothèque SheetJS -->
-    <!-- use version 0.19.1 -->
-    <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.19.1/package/dist/xlsx.full.min.js"></script>
+        <!-- Inclusion de la bibliothèque PapaParse -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+        
+        <!-- Inclusion de la bibliothèque SheetJS -->
+        <!-- use version 0.19.1 -->
+        <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.19.1/package/dist/xlsx.full.min.js"></script>
 
-    <!-- Inclusion de la bibliothèque Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- Inclusion de la bibliothèque Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <!-- Inclusion de la bibliothèque Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <!-- Inclusion de la bibliothèque Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
-    <header class="p-3 text-bg-dark">
-        <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <img src="./img/logo_transparent.png" alt="logo" class="logo">
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">Profile</a></li>
-              <li><a href="#" class="nav-link px-2 text-white">Config</a></li>
+        <header class="p-3 text-bg-dark">
+            <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <img src="./img/logo_transparent.png" alt="logo" class="logo">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Profile</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Config</a></li>
+                </ul>
+                
+                <div class="text-end">
+                <button type="button" class="btn btn-outline-light me-2">Login</button>
+                <button type="button" class="btn btn-warning">Sign-up</button>
+                </div>
+            </div>
+            </div>
+        </header>
+
+        <div style="text-align: center;">
+
+            <div class="data">
+                <h2>Vos données Reflex IcI:</h2>
+                <div>
+                <textarea id="csv" rows="10" cols="120">Entrez votre texte CSV ici</textarea>
+                </div>
+                <div>
+                <button onclick="getData()">Récupérer les données</button>
+                </div>
+            </div>
+
+            <div class="charts">            
+                <div class="chart-container">
+                    <h3>MMR au fil des parties:</h3>
+                    <canvas id="mmrChart"></canvas>
+                    <div class="chart-button-container">
+                        <button class="chart-button">    
+                            <img src="https://img.icons8.com/android/24/null/info.png"/></button>
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <h3>Nuage de point:</h3>
+                    <canvas id="emmrChart"></canvas>
+                    <div class="chart-button-container">
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Les dommages par rapport a la durée:</h3>
+                    <canvas id="timedmgChart"></canvas>
+                    <div class="chart-button-container">
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h3>Classse les plus rencontrées</h3>
+                    <canvas id="mostspecChart"></canvas>
+                    <div class="chart-button-container">
+                        <button class="chart-button" id="info-barchart">
+                            <div class="tooltip-chart" id="tooltip-barchart">
+                                Graphique en barre: C'est un type de graphique qui utilise des barres horizontales ou verticales pour représenter des données numériques. 
+                                Leur longueur est proportionnelle aux valeurs qu'elles représentent. 
+                                Ils sont souvent utilisés pour comparer des valeurs ou pour montrer des tendances au fil du temps.
+                            </div>
+                            <img src="https://img.icons8.com/android/24/null/info.png"/>
+                        </button>
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h3>Total des parties:</h3>
+                    <canvas id="winChart"></canvas>
+                    <div class="chart-button-container">
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+        <script src="graphs.js"></script>
+
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Parteon</a></li>
             </ul>
-            
-            <div class="text-end">
-              <button type="button" class="btn btn-outline-light me-2">Login</button>
-              <button type="button" class="btn btn-warning">Sign-up</button>
-            </div>
-          </div>
-        </div>
-    </header>
+            <p class="text-center text-muted">© 2022 Pétroushka, Inc</p>
+        </footer>
+    </body>
 
-    <div style="text-align: center;">
 
-        <div></div>
-        <h2>Vos données Reflex IcI:</h2>
-        <div>
-          <textarea id="csv" rows="10" cols="120">Entrez votre texte CSV ici</textarea>
-        </div>
-        <div>
-          <button onclick="getData()">Récupérer les données</button>
-        </div>
 
-        <div class="charts">            
-            <div class="chart-container">
-                <h3>MMR au fil des parties:</h3>
-                <canvas id="mmrChart"></canvas>
-            </div>
-            
-            <div class="chart-container">
-                <h3>Nuage de point:</h3>
-                <canvas id="emmrChart"></canvas>
-            </div>
+    <script>
+        const button = document.querySelector("#info-barchart");
+        const tooltip = document.querySelector("#tooltip-barchart");
 
-            <div class="chart-container">
-                <h3>Les dommages par rapport a la durée:</h3>
-                <canvas id="timedmgChart"></canvas>
-            </div>
-            <div class="chart-container">
-                <h3>Classse les plus rencontrées</h3>
-                <canvas id="mostspecChart"></canvas>
-            </div>
-            <div class="chart-container">
-                <h3>Total des parties:</h3>
-                <canvas id="winChart"></canvas>
-            </div>
-        </div>
-    </div>
+        button.addEventListener("mouseover", () => {
+            console.log("test")
+            tooltip.style.display = "block";
+        });
 
-    <script src="script.js"></script>
-    <script src="graphs.js"></script>
+        button.addEventListener("mouseout", () => {
+            tooltip.style.display = "none";
+        });
+    </script>
 
-    <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Parteon</a></li>
-        </ul>
-        <p class="text-center text-muted">© 2022 Pétroushka, Inc</p>
-    </footer>
-  </body>
 </html>
