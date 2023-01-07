@@ -140,6 +140,7 @@ const mostspecGraph = (tableau) =>{
             label: 'Les Classe qui te cassent les couilles',
             data: Object.values(players),
             backgroundColor:classeColors,
+            borderColor: ['rgb(201, 203, 207)'],
             borderWidth: 1
         }]
         };

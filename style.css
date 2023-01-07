@@ -41,7 +41,7 @@ h1,h2,h3,p {
     position: relative;
 }
 
-.databt{
+.data-button{
     border-radius: 5px;
     border: 1px solid black;
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
