@@ -10,8 +10,8 @@ const winGraph = (tableau) =>{
         label: 'Score',
         data: Object.values(win),
         backgroundColor: [
-            'rgb(217,0,0)',
-            'rgb(0, 120, 255)',
+            '#FF0000',
+            '#00FF00',
         ]
     }]
     };
@@ -102,15 +102,19 @@ const timedmgGraph = (tableau) =>{
     
     const duree = tableau.map(row => row.Duration);
     const dommages = tableau.map(row => row.Damage);
+    const victory = tableau.map(row => Boolean(row.Victory));
 
     //const win = tableau.map(row => getClasseColors()["true"]);
 
     const data = {
-        labels: "Line Chart",
+        labels: ["Victoire","Défaite"],
         datasets: [{
             label: ['Tes putains de Dmg vs le temps que tu kill ou tu die'],
             data: makeXY(duree, dommages),
-            backgroundColor: getVictoryColor(tableau.map(row => row.Victory)),
+            pointBackgroundColor: function(context) {
+                console.log(victory[context.dataIndex]);
+                return victory[context.dataIndex] ? '#00FF00' : '#FF0000';
+              }
         }]
         };
         new Chart(ctx, {
@@ -163,7 +167,7 @@ const mostspecGraph = (tableau) =>{
     const data = {
         labels: Object.keys(players),
         datasets: [{
-            label: 'Les Classe qui te cassent les couilles',
+            label: "to delete",
             data: Object.values(players),
             backgroundColor:classeColors,
             borderColor: ['rgb(0, 0, 0)'],

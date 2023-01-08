@@ -85,17 +85,23 @@ const countBarchart = (array) => {
     return counts;
 }
 
-const parse = (csv) =>{
+const parse = (csv) => {
     let tableau;
-
+  
     Papa.parse(csv, {
-        header: true,
-        complete: function (results) {
-            tableau = results.data;
+      header: true,
+      transform: function(value, header) {
+        if (header === 'Victory') {
+          return value === 'true';
         }
+        return value;
+      },
+      complete: function(results) {
+        tableau = results.data;
+      }
     });
     return tableau;
-}
+};
 
 const getData = (testmode=false) =>{
     const csv = document.getElementById("csv").value;
@@ -119,15 +125,6 @@ const getClasseColors = () =>{
         DEMONHUNTER:"rgb(163, 48, 201)",
         PALADIN:"rgb(245, 140, 186)",
     }
-}
-
-const getVictoryColor = (data) =>{
-    const victoryColor ={
-        true:"rgb(0, 108, 231)",
-        false:"rgb(198, 0, 0)"
-    }
-
-    return Object.values(victoryColor)[data]
 }
 
 const plotCharts = (tableau) =>{
