@@ -1,4 +1,4 @@
-//Classse les plus rencontrées :
+//Total des parties :
 const winGraph = (tableau) =>{
     const ctx = document.getElementById('winChart');
 
@@ -7,11 +7,10 @@ const winGraph = (tableau) =>{
     const data = {
         labels: ['Victoires','Défaites'],
         datasets: [{
-            label: "to delete",
             data: Object.values(win),
             backgroundColor: [
-                '#FF0000',
                 '#00FF00',
+                '#FF0000',
             ],
             borderColor: ['rgb(0, 0, 0)'],
             borderWidth: 1
@@ -24,6 +23,15 @@ const winGraph = (tableau) =>{
                 scales: {
                   y: {
                     beginAtZero: true
+                  }
+                },
+                animation: false,
+                plugins: {
+                  legend: {
+                    display: false
+                  },
+                  tooltip: {
+                    enabled: false
                   }
                 }
             }
@@ -56,7 +64,16 @@ const mmrGraph = (tableau) =>{
         new Chart(ctx, {
             type: 'line',
             data: data,
-            options: {}
+            options: {
+                animation: false,
+                plugins: {
+                  legend: {
+                    display: false
+                  },
+                  tooltip: {
+                    enabled: false
+                  }
+                }}
         }
         );
 }
@@ -96,7 +113,16 @@ const emmrGraph = (tableau) =>{
                             display: 'true',
                             text:"MMR de l'équipe enemie"
                         }
-                    },
+                    }
+                },
+                animation: false,
+                plugins: {
+                  legend: {
+                    display: false
+                  },
+                  tooltip: {
+                    enabled: false
+                  }
                 }
             }
         }
@@ -106,20 +132,27 @@ const emmrGraph = (tableau) =>{
 //Dommages en fonction de la durée de la partie :
 const timedmgGraph = (tableau) =>{
     const ctx = document.getElementById('timedmgChart');
-    
-    const duree = tableau.map(row => row.Duration);
-    const dommages = tableau.map(row => row.Damage);
-    const victory = tableau.map(row => Boolean(row.Victory));
 
-    //const win = tableau.map(row => getClasseColors()["true"]);
+    const victories = tableau.filter(row => row.Victory);
+    const defeats = tableau.filter(row => !row.Victory);
+    
+    const durationVictories = victories.map(row => row.Duration);
+    const damageVictories = victories.map(row => row.Damage);
+    
+    const durationDefeats = defeats.map(row => row.Duration);
+    const damageDefeats = defeats.map(row => row.Damage);
 
     const data = {
-        labels: ["Victoire","Défaite"],
-        datasets: [{
-            label: ['Tes putains de Dmg vs le temps que tu kill ou tu die'],
-            data: makeXY(duree, dommages),
-            pointBackgroundColor: function(context) {return victory[context.dataIndex] ? '#00FF00' : '#FF0000';}
-        }]
+        labels: ["Rapport dommages durée"],
+        datasets: [
+            {label: ['Victoire'],
+            data: makeXY(durationVictories, damageVictories),
+            pointBackgroundColor:'#00FF00'},
+            {label: ['Défaite'],
+            data: makeXY(durationDefeats, damageDefeats),
+            pointBackgroundColor:'#e60000'}
+
+        ]
         };
         new Chart(ctx, {
             type: 'scatter',
@@ -140,7 +173,8 @@ const timedmgGraph = (tableau) =>{
                         title:{
                             display: 'true',
                             text:'Dommages'
-                        }
+                        },
+                        
                     },
                 }
             }
@@ -170,7 +204,6 @@ const mostspecGraph = (tableau) =>{
     const data = {
         labels: Object.keys(players),
         datasets: [{
-            label: "to delete",
             data: Object.values(players),
             backgroundColor:classeColors,
             borderColor: ['rgb(0, 0, 0)'],
@@ -185,6 +218,15 @@ const mostspecGraph = (tableau) =>{
                   y: {
                     beginAtZero: true
                   }
+                },
+                animation: false,
+                plugins: {
+                  legend: {
+                    display: false
+                  },
+                  tooltip: {
+                    enabled: false
+                  }
                 }
             }
         }
@@ -195,15 +237,22 @@ const mostspecGraph = (tableau) =>{
 //Classe Team les plus jouées :
 const mostspecTeamGraph = (tableau) =>{
     const ctx = document.getElementById('mostspecTeamChart');
-
+    
+    let joueur = document.getElementById("name").value
     const team = tableau.map(row => row.TeamComposition);
+
+    if(joueur === ''){
+        joueur='Alorslazone'
+    }
 
     let temp = makePlayers(team);
     let players = [];
 
     for (let i = 0; i < temp.length; i++){
         for (let j = 0; j < temp[i].length; j++){
-            players.push(temp[i][j].classe);
+            if(temp[i][j].pseudo !== joueur){
+                players.push(temp[i][j].classe);
+            }
         }
     }
 
@@ -214,7 +263,6 @@ const mostspecTeamGraph = (tableau) =>{
     const data = {
         labels: Object.keys(players),
         datasets: [{
-            label: "to delete",
             data: Object.values(players),
             backgroundColor:classeColors,
             borderColor: ['rgb(0, 0, 0)'],
@@ -228,6 +276,15 @@ const mostspecTeamGraph = (tableau) =>{
                 scales: {
                   y: {
                     beginAtZero: true
+                  }
+                },
+                animation: false,
+                plugins: {
+                  legend: {
+                    display: false
+                  },
+                  tooltip: {
+                    enabled: false
                   }
                 }
             }

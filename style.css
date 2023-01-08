@@ -67,6 +67,10 @@ h1,h2,h3,p {
     text-align: center;
 }
 
+.pseudo-serveur{
+    margin: 1%;
+}
+
 
 header{
     text-align: center;

@@ -37,6 +37,7 @@
                     <p>Si vous souhaitez afficher vos graphiques a partir de votre addon <strong>Reflex</strong> sur <strong>World of Warcraft</strong>, il est nécessaire de suivre quelques étapes simples.</p>
                     <p>Tout d'abord, veillez à avoir l'addon <strong>Reflex</strong> installé et activé sur votre jeu. Ensuite, rendez-vous sur l'interface de ce dernier et appuyez sur le bouton rouge avec un "D" jaune qui se trouve en haut à droite de l'écran. Cette action va générer un encadré de texte contenant toutes les données nécessaires pour afficher les graphiques.</p>
                     <p>Il ne vous reste plus qu'à copier ce texte et à le coller dans l'encadré prévu à cet effet, situé dans l'interface de World of Warcraft. Une fois cette opération effectuée, vous devriez pouvoir voir apparaître les graphiques correspondants. Bon jeu !</p>
+                    <input id="name" class="pseudo-serveur" type="text" placeholder="Pseudo-Serveur">
                 </div>
                 <div>
                 <textarea id="csv" rows="10" cols="120" placeholder="Copiez coller vos données ici"></textarea>
@@ -48,15 +49,6 @@
             </div>
 
             <div class="charts"> 
-                
-                <div class="chart-container">
-                    <h3>Total des parties :</h3>
-                    <canvas id="winChart"></canvas>
-                    <div class="chart-button-container">
-                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
-                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
-                    </div>
-                </div>
                 
                 <div class="chart-container">
                     <h3>MMR au fil des parties :</h3>
@@ -79,6 +71,15 @@
                             Ils sont utilisés pour visualiser les relations entre deux variables et pour détecter des tendances ou des modèles dans les données.</p>
                         </div>
                         <button class="chart-button" id="info-scatterchart"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Total des parties :</h3>
+                    <canvas id="winChart"></canvas>
+                    <div class="chart-button-container">
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
                 </div>
