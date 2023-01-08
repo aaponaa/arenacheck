@@ -5,12 +5,12 @@ const winGraph = (tableau) =>{
     const win = countBarchart(tableau.map(row => row.Victory))
 
     const data = {
-        labels: ['Victoires','Défaites'],
+        labels: ['Défaites','Victoires'],
         datasets: [{
             data: Object.values(win),
             backgroundColor: [
-                '#00FF00',
                 '#FF0000',
+                '#00FF00',
             ],
             borderColor: ['rgb(0, 0, 0)'],
             borderWidth: 1
