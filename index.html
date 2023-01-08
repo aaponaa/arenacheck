@@ -43,10 +43,21 @@
                 </div>
                 <div>
                 <button onclick="getData()" class="data-button">Récupérer les données</button>
+                <button onclick="exempleData()" class="data-button">Données d'exemple</button>
                 </div>
             </div>
 
-            <div class="charts">            
+            <div class="charts"> 
+                
+                <div class="chart-container">
+                    <h3>Total des parties :</h3>
+                    <canvas id="winChart"></canvas>
+                    <div class="chart-button-container">
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
+                    </div>
+                </div>
+                
                 <div class="chart-container">
                     <h3>MMR au fil des parties :</h3>
                     <canvas id="mmrChart"></canvas>
@@ -80,8 +91,9 @@
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
                 </div>
+
                 <div class="chart-container">
-                    <h3>Classse les plus rencontrées :</h3>
+                    <h3>Adversaires les plus rencontrées :</h3>
                     <canvas id="mostspecChart"></canvas>
                     <div class="chart-button-container">
                         <div class="tooltip-chart" id="tooltip-barchart">
@@ -96,10 +108,12 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <h3>Total des parties :</h3>
-                    <canvas id="winChart"></canvas>
+                    <h3>Allié les plus rencontrées :</h3>
+                    <canvas id="mostspecTeamChart"></canvas>
                     <div class="chart-button-container">
-                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
+                        <button class="chart-button" id="info-barchart">
+                            <img src="https://img.icons8.com/android/24/null/info.png"/>
+                        </button>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
                 </div>

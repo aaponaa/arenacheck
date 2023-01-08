@@ -1,27 +1,34 @@
-//Total des parties :
+//Classse les plus rencontrées :
 const winGraph = (tableau) =>{
     const ctx = document.getElementById('winChart');
 
     const win = countBarchart(tableau.map(row => row.Victory))
 
     const data = {
-    labels: Object.keys(win),
-    datasets: [{
-        label: 'Score',
-        data: Object.values(win),
-        backgroundColor: [
-            '#FF0000',
-            '#00FF00',
-        ]
-    }]
-    };
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: data,
-        options: {}
-    }
-    );
-
+        labels: ['Victoires','Défaites'],
+        datasets: [{
+            label: "to delete",
+            data: Object.values(win),
+            backgroundColor: [
+                '#FF0000',
+                '#00FF00',
+            ],
+            borderColor: ['rgb(0, 0, 0)'],
+            borderWidth: 1
+        }]
+        };
+        new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+            }
+        }
+        );
 }
 
 // MMR au fil des parties :
@@ -111,10 +118,7 @@ const timedmgGraph = (tableau) =>{
         datasets: [{
             label: ['Tes putains de Dmg vs le temps que tu kill ou tu die'],
             data: makeXY(duree, dommages),
-            pointBackgroundColor: function(context) {
-                console.log(victory[context.dataIndex]);
-                return victory[context.dataIndex] ? '#00FF00' : '#FF0000';
-              }
+            pointBackgroundColor: function(context) {return victory[context.dataIndex] ? '#00FF00' : '#FF0000';}
         }]
         };
         new Chart(ctx, {
@@ -144,8 +148,7 @@ const timedmgGraph = (tableau) =>{
         );
 }
 
-
-//Classse les plus rencontrées :
+//Classe Ennemy les plus rencontrées :
 const mostspecGraph = (tableau) =>{
     const ctx = document.getElementById('mostspecChart');
 
@@ -189,4 +192,45 @@ const mostspecGraph = (tableau) =>{
 }
 
 
+//Classe Team les plus jouées :
+const mostspecTeamGraph = (tableau) =>{
+    const ctx = document.getElementById('mostspecTeamChart');
 
+    const team = tableau.map(row => row.TeamComposition);
+
+    let temp = makePlayers(team);
+    let players = [];
+
+    for (let i = 0; i < temp.length; i++){
+        for (let j = 0; j < temp[i].length; j++){
+            players.push(temp[i][j].classe);
+        }
+    }
+
+    players = countBarchart(players);
+    
+    const classeColors = Object.keys(players).map(classe => getClasseColors()[classe]);
+
+    const data = {
+        labels: Object.keys(players),
+        datasets: [{
+            label: "to delete",
+            data: Object.values(players),
+            backgroundColor:classeColors,
+            borderColor: ['rgb(0, 0, 0)'],
+            borderWidth: 1
+        }]
+        };
+        new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+            }
+        }
+        );
+}
