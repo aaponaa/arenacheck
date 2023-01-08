@@ -76,8 +76,20 @@ const emmrGraph = (tableau) =>{
                 scales: {
                     x: {
                         type: 'linear',
-                        position: 'bottom'
-                    }
+                        position: 'bottom',
+                        title:{
+                            display: 'true',
+                            text:'MMR de ton équipe'
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        position: 'bottom',
+                        title:{
+                            display: 'true',
+                            text:"MMR de l'équipe enemie"
+                        }
+                    },
                 }
             }
         }
@@ -88,15 +100,17 @@ const emmrGraph = (tableau) =>{
 const timedmgGraph = (tableau) =>{
     const ctx = document.getElementById('timedmgChart');
     
-    const DUR = tableau.map(row => row.Duration);
-    const DMG = tableau.map(row => row.Damage);    
+    const duree = tableau.map(row => row.Duration);
+    const dommages = tableau.map(row => row.Damage);
+
+    //const win = tableau.map(row => getClasseColors()["true"]);
 
     const data = {
         labels: "Line Chart",
         datasets: [{
-            label: 'Tes putains de Dmg vs le temps que tu kill ou tu die',
-            data: makeXY(DUR, DMG),
-            borderColor: 'rgb(88, 137, 156)',
+            label: ['Tes putains de Dmg vs le temps que tu kill ou tu die'],
+            data: makeXY(duree, dommages),
+            backgroundColor: getVictoryColor(tableau.map(row => row.Victory)),
         }]
         };
         new Chart(ctx, {
@@ -106,8 +120,20 @@ const timedmgGraph = (tableau) =>{
                 scales: {
                     x: {
                         type: 'linear',
-                        position: 'bottom'
-                    }
+                        position: 'bottom',
+                        title:{
+                            display: 'true',
+                            text:'Durée de la partie en seconde'
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        position: 'bottom',
+                        title:{
+                            display: 'true',
+                            text:'Dommages'
+                        }
+                    },
                 }
             }
         }
@@ -140,7 +166,7 @@ const mostspecGraph = (tableau) =>{
             label: 'Les Classe qui te cassent les couilles',
             data: Object.values(players),
             backgroundColor:classeColors,
-            borderColor: ['rgb(201, 203, 207)'],
+            borderColor: ['rgb(0, 0, 0)'],
             borderWidth: 1
         }]
         };

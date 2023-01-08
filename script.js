@@ -121,6 +121,15 @@ const getClasseColors = () =>{
     }
 }
 
+const getVictoryColor = (data) =>{
+    const victoryColor ={
+        true:"rgb(0, 108, 231)",
+        false:"rgb(198, 0, 0)"
+    }
+
+    return Object.values(victoryColor)[data]
+}
+
 const plotCharts = (tableau) =>{
     
     winGraph(tableau);
