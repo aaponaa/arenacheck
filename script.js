@@ -1,21 +1,3 @@
-const getClasseColors = () =>{
-    return classeColor = {
-        DEATHKNIGHT:"rgb(196, 31, 59)",
-        DRUID:"rgb(255, 125, 10)",
-        MONK:"rgb(0, 255, 150)",
-        EVOKER:"rgb(51, 147, 127)",
-        PRIEST:"rgb(255, 255, 255)",
-        WARLOCK:"rgb(135, 135, 237)",
-        WARRIOR:"rgb(199, 156, 110)",
-        HUNTER:"rgb(169, 210, 113)",
-        ROGUE:"rgb(255, 245, 105)",
-        SHAMAN:"rgb(0, 112, 222)",
-        MAGE:"rgb(64, 199, 235)",
-        DEMONHUNTER:"rgb(163, 48, 201)",
-        PALADIN:"rgb(245, 140, 186)",
-    }
-}
-
 const makeXY = (xValues, yValues) => {
     const objects = [];
     for (let i = 0; i < xValues.length; i++) {
@@ -130,15 +112,37 @@ const exempleData = () =>{
 const plotCharts = (tableau) =>{
     
     winGraph(tableau);
+    specplayedGraph(tableau);
     mmrGraph(tableau);
     emmrGraph(tableau);
     timedmgGraph(tableau);
+    timehealGraph(tableau);
     mostspecGraph(tableau);
     mostspecTeamGraph(tableau);
 }
 
 
+/* DATA */
 
+
+
+const getClasseColors = () =>{
+    return classeColor = {
+        DEATHKNIGHT:"rgb(196, 31, 59)",
+        DRUID:"rgb(255, 125, 10)",
+        MONK:"rgb(0, 255, 150)",
+        EVOKER:"rgb(51, 147, 127)",
+        PRIEST:"rgb(255, 255, 255)",
+        WARLOCK:"rgb(135, 135, 237)",
+        WARRIOR:"rgb(199, 156, 110)",
+        HUNTER:"rgb(169, 210, 113)",
+        ROGUE:"rgb(255, 245, 105)",
+        SHAMAN:"rgb(0, 112, 222)",
+        MAGE:"rgb(64, 199, 235)",
+        DEMONHUNTER:"rgb(163, 48, 201)",
+        PALADIN:"rgb(245, 140, 186)",
+    }
+}
 
 const exempleCSV = `Timestamp;Map;PlayersNumber;TeamComposition;EnemyComposition;Duration;Victory;KillingBlows;Damage;Healing;Honor;RatingChange;MMR;EnemyMMR;Specialization;isRated
 1672955992;1134;4;MONK-Mistweaver-Pôum,ROGUE-Assassination-Alorslazone;DRUID-Feral-Fatcatexe-Outland,PRIEST-Shadow-Monsignore-Dethecus;122;false;0;1141976;140468;0;-11;1587;1582;Assassination;true

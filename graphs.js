@@ -39,6 +39,46 @@ const winGraph = (tableau) =>{
         );
 }
 
+//Spécialisations les plus jouées :
+const specplayedGraph = (tableau) =>{
+    const ctx = document.getElementById('specplayedChart');
+
+    const spec = countBarchart(tableau.map(row => row.Specialization))
+
+    const classeColors = Object.keys(spec).map(classe => getClasseColors()[classe]);
+
+    const data = {
+        labels: Object.keys(spec),
+        datasets: [{
+            data: Object.values(spec),
+            backgroundColor: classeColors,
+            borderColor: ['rgb(0, 0, 0)'],
+            borderWidth: 1
+        }]
+        };
+        new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                },
+                animation: false,
+                plugins: {
+                  legend: {
+                    display: false
+                  },
+                  tooltip: {
+                    enabled: false
+                  }
+                }
+            }
+        }
+        );
+}
+
 // MMR au fil des parties :
 const mmrGraph = (tableau) =>{
     const ctx = document.getElementById('mmrChart');
@@ -150,6 +190,59 @@ const timedmgGraph = (tableau) =>{
             pointBackgroundColor:'#00FF00'},
             {label: ['Défaite'],
             data: makeXY(durationDefeats, damageDefeats),
+            pointBackgroundColor:'#e60000'}
+
+        ]
+        };
+        new Chart(ctx, {
+            type: 'scatter',
+            data: data,
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        title:{
+                            display: 'true',
+                            text:'Durée de la partie en seconde'
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        position: 'bottom',
+                        title:{
+                            display: 'true',
+                            text:'Dommages'
+                        },
+                        
+                    },
+                }
+            }
+        }
+        );
+}
+
+//Dommages en fonction de la durée de la partie :
+const timehealGraph = (tableau) =>{
+    const ctx = document.getElementById('timehealChart');
+
+    const victories = tableau.filter(row => row.Victory);
+    const defeats = tableau.filter(row => !row.Victory);
+    
+    const durationVictories = victories.map(row => row.Duration);
+    const healingVictories = victories.map(row => row.Healing);
+    
+    const durationDefeats = defeats.map(row => row.Duration);
+    const healingDefeats = defeats.map(row => row.Healing);
+
+    const data = {
+        labels: ["Rapport dommages durée"],
+        datasets: [
+            {label: ['Victoire'],
+            data: makeXY(durationVictories, healingVictories),
+            pointBackgroundColor:'#00FF00'},
+            {label: ['Défaite'],
+            data: makeXY(durationDefeats, healingDefeats),
             pointBackgroundColor:'#e60000'}
 
         ]
