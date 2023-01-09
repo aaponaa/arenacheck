@@ -13,7 +13,8 @@ const winGraph = (tableau) =>{
                 '#00FF00',
             ],
             borderColor: ['rgb(0, 0, 0)'],
-            borderWidth: 1
+            borderWidth: 1,
+            maxBarThickness: 150
         }]
         };
         new Chart(ctx, {
@@ -53,7 +54,8 @@ const specplayedGraph = (tableau) =>{
             data: Object.values(spec),
             backgroundColor: classeColors,
             borderColor: ['rgb(0, 0, 0)'],
-            borderWidth: 1
+            borderWidth: 1,
+            maxBarThickness: 150
         }]
         };
         new Chart(ctx, {
@@ -300,7 +302,8 @@ const mostspecGraph = (tableau) =>{
             data: Object.values(players),
             backgroundColor:classeColors,
             borderColor: ['rgb(0, 0, 0)'],
-            borderWidth: 1
+            borderWidth: 1,
+            maxBarThickness: 150
         }]
         };
         new Chart(ctx, {
@@ -358,7 +361,8 @@ const mostspecTeamGraph = (tableau) =>{
             data: Object.values(players),
             backgroundColor:classeColors,
             borderColor: ['rgb(0, 0, 0)'],
-            borderWidth: 1
+            borderWidth: 1,
+            maxBarThickness: 150
         }]
         };
         new Chart(ctx, {
