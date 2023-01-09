@@ -5,28 +5,32 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ArenaCheck</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel = "icon" href = "./img/favicon.ico" type = "image/x-icon">
+        <link rel="stylesheet" href="./assets/style.css">
+        <link rel = "icon" href = "./assets/img/favicon.ico" type = "image/x-icon">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    </head>
-    <body>
+
+        <script src="./src/graphs.js"></script>
+        <script src="./src/script.js"></script>
+        <script src="./data/data.js"></script>
 
         <!-- Inclusion de la bibliothèque PapaParse -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-        
+
         <!-- Inclusion de la bibliothèque SheetJS -->
         <!-- use version 0.19.1 -->
         <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.19.1/package/dist/xlsx.full.min.js"></script>
 
         <!-- Inclusion de la bibliothèque Chart.js -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        
+
         <!-- Inclusion de la bibliothèque Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    </head>
+    <body>
 
         <header>
-            <img src="./img/logo.png" alt="logo" class="logo">
+            <img src="./assets/img/logo.png" alt="logo" class="logo">
         </header>
 
         <div style="text-align: center;">
@@ -50,62 +54,61 @@
 
             <div class="charts"> 
                 
-                <div class="chart-container">
+                <div class="chart-container" data-tooltip="lineChart">
                     <h3>MMR au fil des parties :</h3>
                     <canvas id="mmrChart"></canvas>
                     <div class="chart-button-container">
-                        <button class="chart-button">
-                            <img src="https://img.icons8.com/android/24/null/info.png"/>
-                        </button>
+                        <div class="tooltip-chart" id="tooltip-mmrChart"></div>
+                        <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
                 </div>
                 
-                <div class="chart-container">
+                <div class="chart-container" data-tooltip="scatterChart">
                     <h3>MMR comparative :</h3>
                     <canvas id="emmrChart"></canvas>
                     <div class="chart-button-container">
-                        <div class="tooltip-chart" id="tooltip-scatterchart">
-                            <p><strong>Diagramme de dispersion:</strong> C'est un type de graphique qui utilise des points pour représenter les données. 
-                            Les points sont placés sur un graphique en fonction de leurs valeurs sur deux axes différents. 
-                            Ils sont utilisés pour visualiser les relations entre deux variables et pour détecter des tendances ou des modèles dans les données.</p>
-                        </div>
+                        <div class="tooltip-chart" id="tooltip-emmrChart"></div>
                         <button class="chart-button" id="info-scatterchart"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
                 </div>
 
-                <div class="chart-container">
+                <div class="chart-container" data-tooltip="barChart">
                     <h3>Total des parties :</h3>
                     <canvas id="winChart"></canvas>
                     <div class="chart-button-container">
+                        <div class="tooltip-chart" id="tooltip-winChart"></div>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
                 </div>
                 
-                <div class="chart-container">
+                <div class="chart-container" data-tooltip="barChart">
                     <h3>Specialisations Jouée :</h3>
                     <canvas id="specplayedChart"></canvas>
                     <div class="chart-button-container">
+                        <div class="tooltip-chart" id="tooltip-specplayedChart"></div>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
                 </div>
 
-                <div class="chart-container">
+                <div class="chart-container" data-tooltip="scatterChart">
                     <h3>Dommages en fonction de la durée de la partie :</h3>
                     <canvas id="timedmgChart"></canvas>
                     <div class="chart-button-container">
+                        <div class="tooltip-chart" id="tooltip-timedmgChart"></div>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
                 </div>
                 
-                <div class="chart-container">
+                <div class="chart-container" data-tooltip="scatterChart">
                     <h3>Soins en fonction de la durée de la partie :</h3>
                     <canvas id="timehealChart"></canvas>
                     <div class="chart-button-container">
+                        <div class="tooltip-chart" id="tooltip-scatterChart"></div>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
@@ -130,17 +133,13 @@
                     <h3>Allié les plus rencontrées :</h3>
                     <canvas id="mostspecTeamChart"></canvas>
                     <div class="chart-button-container">
-                        <button class="chart-button" id="info-barchart">
-                            <img src="https://img.icons8.com/android/24/null/info.png"/>
-                        </button>
+                        <div class="tooltip-chart" id="tooltip-mostspecTeamChart"></div>
+                        <button class="chart-button" id="To-edit"><img src="https://img.icons8.com/android/24/null/info.png"/></button>
                         <button class="chart-button"><img src="https://img.icons8.com/android/24/null/download.png"/></button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <script src="script.js"></script>
-        <script src="graphs.js"></script>
 
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
@@ -153,28 +152,26 @@
         </footer>
     </body>
 
+    <script type="module">
+        const chartContainers = document.querySelectorAll('.chart-container');
+
+        chartContainers.forEach(container => {
+            const tooltipType = container.getAttribute('data-tooltip');
+            const tooltipButton = container.querySelector(`.chart-button`);
+            const tooltipInfo = container.querySelector(`.tooltip-chart`);
+
+            if (tooltipButton !== null){
+                tooltipButton.addEventListener("mouseover", () => {
+                    tooltipInfo.innerHTML  = tooltips[tooltipType]
+                    tooltipInfo.style.display = "block";
+                });
+
+                tooltipButton.addEventListener("mouseout", () => {
+                    tooltipInfo.style.display = "none";
+                });
+            }
 
 
-    <script>
-        const buttonInfoBarchart = document.querySelector("#info-barchart");
-        const tooltipInfoBarchart = document.querySelector("#tooltip-barchart");
-        const buttonInfoScatterchart = document.querySelector("#info-scatterchart");
-        const tooltipInfoScatterchart = document.querySelector("#tooltip-scatterchart");
-
-        buttonInfoBarchart.addEventListener("mouseover", () => {
-            tooltipInfoBarchart.style.display = "block";
-        });
-
-        buttonInfoBarchart.addEventListener("mouseout", () => {
-            tooltipInfoBarchart.style.display = "none";
-        });
-
-        buttonInfoScatterchart.addEventListener("mouseover", () => {
-            tooltipInfoScatterchart.style.display = "block";
-        });
-
-        buttonInfoScatterchart.addEventListener("mouseout", () => {
-            tooltipInfoScatterchart.style.display = "none";
         });
     </script>
 

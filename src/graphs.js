@@ -43,9 +43,9 @@ const winGraph = (tableau) =>{
 const specplayedGraph = (tableau) =>{
     const ctx = document.getElementById('specplayedChart');
 
-    const spec = countBarchart(tableau.map(row => row.Specialization))
-
-    const classeColors = Object.keys(spec).map(classe => getClasseColors()[classe]);
+    const spec = countBarchart(tableau.map(row => row.Specialization));
+    const classKeys = tableau.map(row => getClassKeyFromSpec(wowClasses, row.Specialization));
+    const classeColors = classKeys.map(classe => wowClasses[classe].color);
 
     const data = {
         labels: Object.keys(spec),
@@ -291,8 +291,66 @@ const mostspecGraph = (tableau) =>{
     }
 
     players = countBarchart(players);
+
+    const classeColors = Object.keys(players).map(classe => wowClasses[classe].color);
+
+    const data = {
+        labels: Object.keys(players),
+        datasets: [{
+            data: Object.values(players),
+            backgroundColor:classeColors,
+            borderColor: ['rgb(0, 0, 0)'],
+            borderWidth: 1
+        }]
+        };
+        new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                },
+                animation: false,
+                plugins: {
+                  legend: {
+                    display: false
+                  },
+                  tooltip: {
+                    enabled: false
+                  }
+                }
+            }
+        }
+        );
+}
+
+//Classe Team les plus jouées :
+const mostspecTeamGraph = (tableau) =>{
+    const ctx = document.getElementById('mostspecTeamChart');
     
-    const classeColors = Object.keys(players).map(classe => getClasseColors()[classe]);
+    let joueur = document.getElementById("name").value
+    const team = tableau.map(row => row.TeamComposition);
+
+    if(joueur === ''){
+        joueur='Alorslazone'
+    }
+
+    let temp = makePlayers(team);
+    let players = [];
+
+    for (let i = 0; i < temp.length; i++){
+        for (let j = 0; j < temp[i].length; j++){
+            if(temp[i][j].pseudo !== joueur){
+                players.push(temp[i][j].classe);
+            }
+        }
+    }
+
+    players = countBarchart(players);
+
+    const classeColors = Object.keys(players).map(classe => wowClasses[classe].color);
 
     const data = {
         labels: Object.keys(players),
@@ -327,60 +385,24 @@ const mostspecGraph = (tableau) =>{
 }
 
 
-//Classe Team les plus jouées :
-const mostspecTeamGraph = (tableau) =>{
-    const ctx = document.getElementById('mostspecTeamChart');
-    
-    let joueur = document.getElementById("name").value
-    const team = tableau.map(row => row.TeamComposition);
+/* Appel Graph */
 
-    if(joueur === ''){
-        joueur='Alorslazone'
-    }
+const getData = () =>{
+    const csv = document.getElementById("csv").value;
+    plotCharts(parse(csv));
+}
 
-    let temp = makePlayers(team);
-    let players = [];
+const exempleData = () =>{
+    plotCharts(parse(exempleCSV));
+}
 
-    for (let i = 0; i < temp.length; i++){
-        for (let j = 0; j < temp[i].length; j++){
-            if(temp[i][j].pseudo !== joueur){
-                players.push(temp[i][j].classe);
-            }
-        }
-    }
-
-    players = countBarchart(players);
-    
-    const classeColors = Object.keys(players).map(classe => getClasseColors()[classe]);
-
-    const data = {
-        labels: Object.keys(players),
-        datasets: [{
-            data: Object.values(players),
-            backgroundColor:classeColors,
-            borderColor: ['rgb(0, 0, 0)'],
-            borderWidth: 1
-        }]
-        };
-        new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: {
-                scales: {
-                  y: {
-                    beginAtZero: true
-                  }
-                },
-                animation: false,
-                plugins: {
-                  legend: {
-                    display: false
-                  },
-                  tooltip: {
-                    enabled: false
-                  }
-                }
-            }
-        }
-        );
+const plotCharts = (tableau) =>{
+    winGraph(tableau);
+    specplayedGraph(tableau);
+    mmrGraph(tableau);
+    emmrGraph(tableau);
+    timedmgGraph(tableau);
+    timehealGraph(tableau);
+    mostspecGraph(tableau);
+    mostspecTeamGraph(tableau);
 }

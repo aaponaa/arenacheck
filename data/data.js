@@ -1,147 +1,68 @@
-const makeXY = (xValues, yValues) => {
-    const objects = [];
-    for (let i = 0; i < xValues.length; i++) {
-        objects.push({ x: xValues[i], y: yValues[i] });
-    }
-    return objects;
+const tooltips= {
+        scatterChart: "<p><strong>Diagramme de dispersion:</strong> C'est un type de graphique qui utilise des points pour représenter les données. " +
+            "Les points sont placés sur un graphique en fonction de leurs valeurs sur deux axes différents.     " +
+            "Ils sont utilisés pour visualiser les relations entre deux variables et pour détecter des tendances ou des modèles dans les données.</p>",
+        barChart: "<p><strong>Graphique en barre:</strong> C'est un type de graphique qui utilise des barres horizontales ou verticales pour représenter des données numériques. "+
+            "Leur longueur est proportionnelle aux valeurs qu'elles représentent. "+
+            "Ils sont souvent utilisés pour comparer des valeurs ou pour montrer des tendances au fil du temps.</p>",
+        lineChart: "<p><strong>Graphique linéaire:</strong> C'est un type de graphique qui utilise des lignes pour représenter des données au fil du temps. " +
+            "Ils sont souvent utilisés pour montrer comment une variable change au fil du temps ou comment elle est influencée par une autre variable. " +
+            "Les lignes peuvent être connectées par des points ou des marqueurs pour rendre les données plus faciles à lire et à comprendre.</p>",
 }
 
-const makeDate = (timestamp) => {
-    const date = new Date(timestamp*1000);
-    const dateString = date.toLocaleDateString('fr-FR');
-    const timeString = date.toLocaleTimeString('fr-FR');
-    return `${dateString} - ${timeString}`;
-}
-
-const parsePlayers = (row) => {
-    // Séparons les différentes informations de la ligne en utilisant le caractère '-' comme séparateur
-    const parts = row.split('-');
-    const PLAYERSERV = "Archimonde";
-
-    let classe = '', spec = '', pseudo = '', server = '';
-
-    if (parts.length > 0) {
-        classe = parts[0];
-    }
-
-    if (parts.length > 1) {
-        spec = parts[1];
-    }
-
-    if (parts.length > 2) {
-        pseudo = parts[2];
-    }
-
-    if (parts.length > 3) {
-        server = parts[3];
-    }else{
-        server = PLAYERSERV
-    }
-
-    // Renvoyons un objet contenant les informations isolées
-    return {
-        classe: classe,
-        spec: spec,
-        pseudo: pseudo,
-        server: server
-    };
-}
-
-const makePlayers = (data) => {
-    let temp = [];
-    const tab = [];
-
-    for (let i = 0; i < data.length; i++) { 
-        const row  = data[i];
-        const player = row.split(',')  ;
-        for (let i = 0; i < player.length; i++){ 
-            temp.push(parsePlayers(player[i]));
-        }
-        tab.push(temp);
-        temp = [];
-    }
-    return tab;
-}
-
-const countBarchart = (array) => {
-
-    // Initialize an object to store the counts
-    const counts = {};
-
-    // Iterate through the array and count the occurrences of each element
-    for (let i = 0; i < array.length; i++) {
-    const element = array[i];
-    if (counts[element]) {
-        counts[element]++;
-    } else {
-        counts[element] = 1;
-    }
-    }
-
-    return counts;
-}
-
-const parse = (csv) => {
-    let tableau;
-  
-    Papa.parse(csv, {
-      header: true,
-      transform: function(value, header) {
-        if (header === 'Victory') {
-          return value === 'true';
-        }
-        return value;
-      },
-      complete: function(results) {
-        tableau = results.data;
-      }
-    });
-    return tableau;
-};
-
-const getData = (testmode=false) =>{
-    const csv = document.getElementById("csv").value;
-
-    plotCharts(parse(csv));
-}
-
-const exempleData = () =>{
-    plotCharts(parse(exempleCSV));
-}
-
-const plotCharts = (tableau) =>{
-    
-    winGraph(tableau);
-    specplayedGraph(tableau);
-    mmrGraph(tableau);
-    emmrGraph(tableau);
-    timedmgGraph(tableau);
-    timehealGraph(tableau);
-    mostspecGraph(tableau);
-    mostspecTeamGraph(tableau);
-}
-
-
-/* DATA */
-
-
-
-const getClasseColors = () =>{
-    return classeColor = {
-        DEATHKNIGHT:"rgb(196, 31, 59)",
-        DRUID:"rgb(255, 125, 10)",
-        MONK:"rgb(0, 255, 150)",
-        EVOKER:"rgb(51, 147, 127)",
-        PRIEST:"rgb(255, 255, 255)",
-        WARLOCK:"rgb(135, 135, 237)",
-        WARRIOR:"rgb(199, 156, 110)",
-        HUNTER:"rgb(169, 210, 113)",
-        ROGUE:"rgb(255, 245, 105)",
-        SHAMAN:"rgb(0, 112, 222)",
-        MAGE:"rgb(64, 199, 235)",
-        DEMONHUNTER:"rgb(163, 48, 201)",
-        PALADIN:"rgb(245, 140, 186)",
-    }
+const wowClasses = {
+        DEATHKNIGHT: {
+                specs: ["Blood", "Frost", "Unholy"],
+                color: "rgb(196, 31, 59)"
+        },
+        DRUID: {
+                specs: ["Balance", "Feral", "Guardian", "Restoration"],
+                color: "rgb(255, 125, 10)"
+        },
+        MONK: {
+                specs: ["Brewmaster", "Mistweaver", "Windwalker"],
+                color: "rgb(0, 255, 150)"
+        },
+        EVOKER: {
+                specs: ["Devastation", "Preservation"],
+                color: "rgb(51, 147, 127)"
+        },
+        PRIEST: {
+                specs: ["Discipline", "Holy", "Shadow"],
+                color: "rgb(255, 255, 255)"
+        },
+        WARLOCK: {
+                specs: ["Affliction", "Demonology", "Destruction"],
+                color: "rgb(135, 135, 237)"
+        },
+        WARRIOR: {
+                specs: ["Arms", "Fury", "Protection"],
+                color: "rgb(199, 156, 110)"
+        },
+        HUNTER: {
+                specs: ["Beast Mastery", "Marksmanship", "Survival"],
+                color: "rgb(169, 210, 113)"
+        },
+        ROGUE: {
+                specs: ["Assassination", "Outlaw", "Subtlety"],
+                color: "rgb(255, 245, 105)"
+        },
+        SHAMAN: {
+                specs: ["Elemental", "Enhancement", "Restoration"],
+                color: "rgb(0, 112, 222)"
+        },
+        MAGE: {
+                specs: ["Arcane", "Fire", "Frost"],
+                color: "rgb(64, 199, 235)"
+        },
+        DEMONHUNTER: {
+                spec: ["Havoc", "Vengeance"],
+                color: "rgb(163, 48, 201)",
+        },
+        PALADIN: {
+                spec: ["Holy", "Protection", "Retribution"],
+                color: "rgb(245, 140, 186)"
+        },
 }
 
 const exempleCSV = `Timestamp;Map;PlayersNumber;TeamComposition;EnemyComposition;Duration;Victory;KillingBlows;Damage;Healing;Honor;RatingChange;MMR;EnemyMMR;Specialization;isRated
