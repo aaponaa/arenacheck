@@ -1,4 +1,4 @@
-# arenacheck
+# ArenaCheck
 ## Projet : Analyse de données d'arènes PvP de World of Warcraft
 
 Ce projet consiste à créer une page web en JavaScript qui permettra d'afficher et d'analyser les données d'arènes PvP de World of Warcraft.
