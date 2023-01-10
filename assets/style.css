@@ -1,0 +1,80 @@
+body{
+    font-family: 'Lora', serif;
+}
+
+h1,h2,h3,p {
+    font-family: 'Lora', serif;
+}  
+
+.charts{
+    margin: 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+}
+
+.chart-container{
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.data{
+    margin: 0% 6%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.logo{
+    width: 150px;
+    height: 150px;
+}
+
+.chart-button-container{
+    text-align: right;
+    margin: 5px;
+    position: relative;
+}
+
+.data-button{
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.chart-button{
+    all: initial;
+}
+
+.tooltip-chart{
+    display: none;
+    position: absolute;
+    background-color: #2e4750;
+    color: rgb(255, 255, 255);
+    text-align: justify;
+    border-radius: 6px;
+    padding: 10px;
+    right: 10%;
+}
+
+.intro-text{
+    margin: 0% 10%;
+    text-align: center;
+}
+
+.pseudo-serveur{
+    margin: 1%;
+}
+
+
+header{
+    text-align: center;
+    background-color: #2e4750;
+    margin-bottom: 5%;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+}
