@@ -14,7 +14,7 @@ const winGraph = (tableau) =>{
             ],
             borderColor: ['rgb(0, 0, 0)'],
             borderWidth: 1,
-            maxBarThickness: 150
+            maxBarThickness: 150,
         }]
         };
         new Chart(ctx, {
@@ -207,6 +207,10 @@ const timedmgGraph = (tableau) =>{
                         title:{
                             display: 'true',
                             text:'Durée de la partie en seconde'
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                            stepSize: 60,
                         }
                     },
                     y: {
@@ -216,7 +220,6 @@ const timedmgGraph = (tableau) =>{
                             display: 'true',
                             text:'Dommages'
                         },
-                        
                     },
                 }
             }
@@ -260,6 +263,10 @@ const timehealGraph = (tableau) =>{
                         title:{
                             display: 'true',
                             text:'Durée de la partie en seconde'
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                            stepSize: 60,
                         }
                     },
                     y: {
