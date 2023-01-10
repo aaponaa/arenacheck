@@ -12,55 +12,55 @@ const tooltips= {
 
 const wowClasses = {
         DEATHKNIGHT: {
-                specs: ["Blood", "Frost", "Unholy"],
+                specs: ["Blood", "Frost", "Unholy","Sang", "Givre", "Impie"],
                 color: "rgb(196, 31, 59)"
         },
         DRUID: {
-                specs: ["Balance", "Feral", "Guardian", "Restoration"],
+                specs: ["Balance", "Feral", "Guardian", "Restoration","Equilibre", "Farouche", "Protecteur", "Restauration"],
                 color: "rgb(255, 125, 10)"
         },
         MONK: {
-                specs: ["Brewmaster", "Mistweaver", "Windwalker"],
+                specs: ["Brewmaster", "Mistweaver", "Windwalker","Maître brasseur", "Soigneur de brume", "Marcheur du vent"],
                 color: "rgb(0, 255, 150)"
         },
         EVOKER: {
-                specs: ["Devastation", "Preservation"],
+                specs: ["Devastation", "Preservation","Devastation", "Preservation"],
                 color: "rgb(51, 147, 127)"
         },
         PRIEST: {
-                specs: ["Discipline", "Holy", "Shadow"],
+                specs: ["Discipline", "Holy", "Shadow","Discipline", "Sacré", "Ombre"],
                 color: "rgb(255, 255, 255)"
         },
         WARLOCK: {
-                specs: ["Affliction", "Demonology", "Destruction"],
+                specs: ["Affliction", "Demonology", "Destruction","Affliction", "Démonologie", "Destruction"],
                 color: "rgb(135, 135, 237)"
         },
         WARRIOR: {
-                specs: ["Arms", "Fury", "Protection"],
+                specs: ["Arms", "Fury", "Protection","Armes", "Fureur", "Protection"],
                 color: "rgb(199, 156, 110)"
         },
         HUNTER: {
-                specs: ["Beast Mastery", "Marksmanship", "Survival"],
+                specs: ["Beast Mastery", "Marksmanship", "Survival","Maîtrise des bêtes", "Précision", "Survie"],
                 color: "rgb(169, 210, 113)"
         },
         ROGUE: {
-                specs: ["Assassination", "Outlaw", "Subtlety"],
+                specs: ["Assassination", "Outlaw", "Subtlety","Assassinat", "Hors-la-loi", "Finesse"],
                 color: "rgb(255, 245, 105)"
         },
         SHAMAN: {
-                specs: ["Elemental", "Enhancement", "Restoration"],
+                specs: ["Elemental", "Enhancement", "Restoration","Elémentaire", "Amélioration", "Restauration"],
                 color: "rgb(0, 112, 222)"
         },
         MAGE: {
-                specs: ["Arcane", "Fire", "Frost"],
+                specs: ["Arcane", "Fire", "Frost","Arcanes", "Feu", "Givre"],
                 color: "rgb(64, 199, 235)"
         },
         DEMONHUNTER: {
-                spec: ["Havoc", "Vengeance"],
+                spec: ["Havoc", "Vengeance","Havoc", "Vengeance"],
                 color: "rgb(163, 48, 201)",
         },
         PALADIN: {
-                spec: ["Holy", "Protection", "Retribution"],
+                spec: ["Holy", "Protection", "Retribution","Sacré", "Protection", "Vindicte"],
                 color: "rgb(245, 140, 186)"
         },
 }

@@ -102,7 +102,7 @@ const parse = (csv) => {
 
 function getClassKeyFromSpec(data, spec) {
     for (const key in data) {
-        if (data[key].specs.includes(spec)) {
+        if ( data[key].specs.includes(spec)) {
             return key;
         }
     }

@@ -45,8 +45,7 @@ const specplayedGraph = (tableau) =>{
     const ctx = document.getElementById('specplayedChart');
 
     const spec = countBarchart(tableau.map(row => row.Specialization));
-    const classKeys = tableau.map(row => getClassKeyFromSpec(wowClasses, row.Specialization));
-    const classeColors = classKeys.map(classe => wowClasses[classe].color);
+    const classeColors = tableau.map(row => wowClasses[getClassKeyFromSpec(wowClasses, row.Specialization)].color);
 
     const data = {
         labels: Object.keys(spec),
