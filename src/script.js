@@ -9,7 +9,7 @@ const makeXY = (xValues, yValues) => {
 const makeDate = (timestamp) => {
     const date = new Date(timestamp*1000);
     const dateString = date.toLocaleDateString('fr-FR');
-    const timeString = date.toLocaleTimeString('fr-FR');
+    const timeString = date.toLocaleTimeString('fr-FR', { hour: 'numeric', minute: 'numeric' });
     return `${dateString} - ${timeString}`;
 }
 

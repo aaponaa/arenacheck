@@ -13,6 +13,12 @@ h1,h2,h3,p {
     grid-gap: 15px;
 }
 
+@media only screen and (min-width: 300px) and (max-width: 900px) {
+    .charts {
+        grid-template-columns: 1fr;
+    }
+}
+
 .chart-container{
     margin: 5px;
     padding: 10px;
